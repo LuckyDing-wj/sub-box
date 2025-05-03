@@ -1,0 +1,36 @@
+# Modify name if deploying multiple instances
+name = "sub-box"
+
+main = ".open-next/worker.js"
+
+compatibility_date = "2024-09-26"
+compatibility_flags = ["nodejs_compat"]
+
+minify = true
+
+assets = { directory = ".open-next/assets", binding = "ASSETS" }
+
+# [placement]
+# mode = "smart"
+
+# Environment variables
+# Modify these to use the correct environment variables
+[vars]
+ADMIN_USERNAME = "admin"
+ADMIN_PASSWORD = "cherish" # Change this to a secure password
+JWT_SECRET = "RNYoYXffKZMGbIsjEQmxdgH05RbypaCFDOeWy+zwrFg=" # Change this to a secure secret key
+SESSION_TAG = "0"
+SESSION_DURATION = "2592000"
+DEPLOY_TARGET = "cloudflare"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "subs" # Change this to the name of your D1 database
+database_id = "91c3b0a7-7113-4336-a24f-c312d5b56d6d" # wrangler d1 info <YOUR_DATABASE_NAME>
+
+[observability.logs]
+enabled = true
+
+# [[r2_buckets]]
+# binding = "NEXT_INC_CACHE_R2_BUCKET"
+# bucket_name = "prod-sub-box-next-inc-cache"
